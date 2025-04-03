@@ -1,0 +1,48 @@
+erDiagram
+    GYMNASIUM ||--o{ MEMBER : "has registered"
+    GYMNASIUM ||--o{ SESSION : "hosts"
+    MEMBER }o--o{ SESSION : "attends"
+    COACH }o--o{ SESSION : "leads"
+    
+    GYMNASIUM {
+        int gymnasium_id PK
+        string name
+        string address
+        string phone_number
+    }
+    
+    MEMBER {
+        int member_id PK
+        string last_name
+        string first_name
+        string address
+        date date_of_birth
+        string gender
+        int gymnasium_id FK
+    }
+    
+    SESSION {
+        int session_id PK
+        string sport_type
+        datetime schedule
+        int max_capacity
+        int gymnasium_id FK
+    }
+    
+    COACH {
+        int coach_id PK
+        string last_name
+        string first_name
+        int age
+        string specialty
+    }
+    
+    MEMBER_SESSION {
+        int member_id FK
+        int session_id FK
+    }
+    
+    COACH_SESSION {
+        int coach_id FK
+        int session_id FK
+    }
